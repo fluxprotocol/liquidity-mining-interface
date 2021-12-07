@@ -121,6 +121,8 @@ export default function Earn() {
       newCardInfos[0].periodFinish = new Date(Number(data['ORN-ETH'].periodFinish * 1000))
       newCardInfos[0].currentAPR = sCurrentAPR
 
+      console.log('[] newCardInfos -> ', newCardInfos);
+
       // newCardInfos[1].totalDeposited = '$' + Number(data['ORN-USDT'].totalDeposited).toLocaleString()
       // newCardInfos[1].poolRate = Number(data['ORN-USDT'].poolRate).toLocaleString('en') + ' ORN / week'
       // newCardInfos[1].periodFinish = new Date(Number(data['ORN-USDT'].periodFinish))

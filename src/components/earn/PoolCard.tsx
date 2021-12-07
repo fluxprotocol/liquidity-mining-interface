@@ -15,6 +15,7 @@ import {useTotalSupply} from '../../data/TotalSupply'
 import {usePair} from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import {CardInfo} from "../../pages/Earn";
+import { useTokenFarmInfo } from '../../data/TokenDepositInfo'
 
 const StatContainer = styled.div`
   display: flex;
@@ -81,6 +82,8 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
   const currency0 = unwrappedToken(token0)
   const currency1 = unwrappedToken(token1)
 
+  
+
   const isStaking = Boolean(stakingInfo.stakedAmount.greaterThan('0'))
 
   // get the color of the token
@@ -91,6 +94,8 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
 
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
   const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
+
+  useTokenFarmInfo(stakingTokenPair)
 
   // let returnOverMonth: Percent = new Percent('0')
   let valueOfTotalStakedAmountInWETH: TokenAmount | undefined

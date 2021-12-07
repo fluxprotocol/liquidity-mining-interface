@@ -111,7 +111,7 @@ export default function FakePoolCard({ cardInfo }: { cardInfo: CardInfo }) {
         </RowBetween> */}
         <RowBetween>
           <TYPE.white> Current APR </TYPE.white>
-          <TYPE.white>0</TYPE.white>
+          <TYPE.white>01111</TYPE.white>
           {/* <TYPE.white>{cardInfo.currentAPR}</TYPE.white> */}
         </RowBetween>
       </StatContainer>
