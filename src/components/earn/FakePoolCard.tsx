@@ -105,10 +105,10 @@ export default function FakePoolCard({ cardInfo }: { cardInfo: CardInfo }) {
           <TYPE.white>0</TYPE.white>
           {/* <TYPE.white>{cardInfo.poolRate}</TYPE.white> */}
         </RowBetween>
-        <RowBetween>
+        {/* <RowBetween>
           <TYPE.white> Bonus pool </TYPE.white>
-          <TYPE.white>30,000 ORN / month</TYPE.white>
-        </RowBetween>
+          <TYPE.white>30,000 FLX / month</TYPE.white>
+        </RowBetween> */}
         <RowBetween>
           <TYPE.white> Current APR </TYPE.white>
           <TYPE.white>0</TYPE.white>

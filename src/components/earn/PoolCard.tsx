@@ -140,7 +140,7 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
           {currency0.symbol}-{currency1.symbol}
         </TYPE.white>
 
-        <StyledInternalLink to={`/orn/${currencyId(currency0)}/${currencyId(currency1)}`} style={{ width: '100%' }}>
+        <StyledInternalLink to={`/flx/${currencyId(currency0)}/${currencyId(currency1)}`} style={{ width: '100%' }}>
           <ButtonPrimary padding="8px" borderRadius="8px">
             {isStaking ? 'Manage' : 'Deposit'}
           </ButtonPrimary>
@@ -161,12 +161,12 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
           <TYPE.white>0</TYPE.white>
           {/* <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.multiply(`${60 * 60 * 24 * 7}`)
-            ?.toFixed(0, { groupSeparator: ',' })} ORN / week`}</TYPE.white> */}
+            ?.toFixed(0, { groupSeparator: ',' })} FLX / week`}</TYPE.white> */}
         </RowBetween>
-        <RowBetween>
+        {/* <RowBetween>
           <TYPE.white> Bonus pool </TYPE.white>
-          <TYPE.white>30,000 ORN / month</TYPE.white>
-        </RowBetween>
+          <TYPE.white>30,000 FLX / month</TYPE.white>
+        </RowBetween> */}
         <RowBetween>
           <TYPE.white> Current APR </TYPE.white>
           <TYPE.white>0</TYPE.white>
@@ -188,7 +188,7 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
               </span>
               {`${stakingInfo.rewardRate
                 ?.multiply(`${60 * 60 * 24 * 7}`)
-                ?.toSignificant(4, { groupSeparator: ',' })} ORN / week`}
+                ?.toSignificant(4, { groupSeparator: ',' })} FLX / week`}
             </TYPE.black>
           </BottomSection>
         </>

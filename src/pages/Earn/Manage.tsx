@@ -194,7 +194,7 @@ export default function Manage({
               {stakingInfo?.totalRewardRate
                 ?.multiply((60 * 60 * 24 * 7).toString())
                 ?.toFixed(0, { groupSeparator: ',' }) ?? '-'}
-              {' ORN / week'}
+              {' FLX / week'}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
@@ -278,7 +278,7 @@ export default function Manage({
             <AutoColumn gap="sm">
               <RowBetween>
                 <div>
-                  <TYPE.black>Your unclaimed ORN</TYPE.black>
+                  <TYPE.black>Your unclaimed FLX</TYPE.black>
                 </div>
                 {stakingInfo?.earnedAmount && JSBI.notEqual(BIG_INT_ZERO, stakingInfo?.earnedAmount?.raw) && (
                   <ButtonEmpty
@@ -310,7 +310,7 @@ export default function Manage({
                   {stakingInfo?.rewardRate
                     ?.multiply((60 * 60 * 24 * 7).toString())
                     ?.toSignificant(4, { groupSeparator: ',' }) ?? '-'}
-                  {' ORN / week'}
+                  {' FLX / week'}
                 </TYPE.black>
               </RowBetween>
             </AutoColumn>
@@ -320,7 +320,7 @@ export default function Manage({
           <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px' }}>
             ⭐️
           </span>
-          When you withdraw, the contract will automatically claim ORN on your behalf!
+          When you withdraw, the contract will automatically claim FLX on your behalf!
         </TYPE.main>
 
         {!showAddLiquidityButton && (

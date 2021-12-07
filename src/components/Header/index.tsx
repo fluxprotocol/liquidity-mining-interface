@@ -314,8 +314,8 @@ export default function Header() {
           {/*>*/}
           {/*  {t('pool')}*/}
           {/*</StyledNavLink>*/}
-          <StyledNavLink id={`stake-nav-link`} to={'/orn'}>
-            ORN
+          <StyledNavLink id={`stake-nav-link`} to={'/flx'}>
+            FLX
           </StyledNavLink>
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
           {/*  Vote*/}
@@ -336,7 +336,7 @@ export default function Header() {
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? <Dots>Claiming ORN</Dots> : 'Claim ORN'}
+                  {claimTxn && !claimTxn?.receipt ? <Dots>Claiming FLX</Dots> : 'Claim FLX'}
                 </TYPE.white>
               </UNIAmount>
               <CardNoise />
@@ -363,7 +363,7 @@ export default function Header() {
                     </TYPE.white>
                   </HideSmall>
                 )}
-                ORN
+                FLX
               </UNIAmount>
               <CardNoise />
             </UNIWrapper>

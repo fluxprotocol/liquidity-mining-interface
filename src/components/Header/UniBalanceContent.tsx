@@ -67,7 +67,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
         <CardNoise />
         <CardSection gap="md">
           <RowBetween>
-            <TYPE.white color="white">Your ORN Breakdown</TYPE.white>
+            <TYPE.white color="white">Your FLX Breakdown</TYPE.white>
             <StyledClose stroke="white" onClick={() => setShowUniBalanceModal(false)} />
           </RowBetween>
         </CardSection>
@@ -91,7 +91,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
                   <TYPE.white color="white">
                     {uniToClaim?.toFixed(4, { groupSeparator: ',' })}{' '}
                     {uniToClaim && uniToClaim.greaterThan('0') && (
-                      <StyledInternalLink onClick={() => setShowUniBalanceModal(false)} to="/orn/0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a/ETH">
+                      <StyledInternalLink onClick={() => setShowUniBalanceModal(false)} to="/flx/0x0258F474786DdFd37ABCE6df6BBb1Dd5dfC4434a/ETH">
                         (claim)
                       </StyledInternalLink>
                     )}
@@ -105,11 +105,11 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
         {/*<CardSection gap="sm">*/}
         {/*  <AutoColumn gap="md">*/}
         {/*    <RowBetween>*/}
-        {/*      <TYPE.white color="white">ORN price:</TYPE.white>*/}
+        {/*      <TYPE.white color="white">FLX price:</TYPE.white>*/}
         {/*      <TYPE.white color="white">${uniPrice?.toFixed(2) ?? '-'}</TYPE.white>*/}
         {/*    </RowBetween>*/}
         {/*    <RowBetween>*/}
-        {/*      <TYPE.white color="white">ORN in circulation:</TYPE.white>*/}
+        {/*      <TYPE.white color="white">FLX in circulation:</TYPE.white>*/}
         {/*      <TYPE.white color="white">{circulation?.toFixed(0, { groupSeparator: ',' })}</TYPE.white>*/}
         {/*    </RowBetween>*/}
         {/*    <RowBetween>*/}
@@ -117,7 +117,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
         {/*      <TYPE.white color="white">{totalSupply?.toFixed(0, { groupSeparator: ',' })}</TYPE.white>*/}
         {/*    </RowBetween>*/}
         {/*    {uni && uni.chainId === ChainId.MAINNET ? (*/}
-        {/*      <ExternalLink href={`https://uniswap.info/token/${uni.address}`}>View ORN Analytics</ExternalLink>*/}
+        {/*      <ExternalLink href={`https://uniswap.info/token/${uni.address}`}>View FLX Analytics</ExternalLink>*/}
         {/*    ) : null}*/}
         {/*  </AutoColumn>*/}
         {/*</CardSection>*/}
