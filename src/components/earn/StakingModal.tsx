@@ -43,7 +43,6 @@ interface StakingModalProps {
 }
 
 export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiquidityUnstaked }: StakingModalProps) {
-  console.log('[Before] isOpem -> ', isOpen);
   const { account, chainId, library } = useActiveWeb3React()
 
   // track and parse user input
@@ -192,8 +191,6 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
         }
       })
   }
-
-  console.log('[StakingModel] isOpen -> ', isOpen);
 
   return (
     <Modal isOpen={isOpen} onDismiss={wrappedOnDismiss} maxHeight={90}>

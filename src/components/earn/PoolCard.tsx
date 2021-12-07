@@ -16,6 +16,7 @@ import {usePair} from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import {CardInfo} from "../../pages/Earn";
 import { useTokenFarmInfo } from '../../data/TokenDepositInfo'
+import { prettyFormatNumber } from '../../utils/prettyFormatNumber'
 
 const StatContainer = styled.div`
   display: flex;
@@ -95,7 +96,7 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
   const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
 
-  useTokenFarmInfo(stakingTokenPair)
+  const tokenFarmInfo = useTokenFarmInfo(stakingTokenPair, stakingInfo.stakingRewardAddress)
 
   // let returnOverMonth: Percent = new Percent('0')
   let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
@@ -156,30 +157,31 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
         <RowBetween>
           <TYPE.white> Total deposited</TYPE.white>
           <TYPE.white>
-            {valueOfTotalStakedAmountInUSDC
+            ${prettyFormatNumber(tokenFarmInfo.tvl.toFixed(0))}
+            {/* {valueOfTotalStakedAmountInUSDC
               ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-              : `${currency1?.symbol !== 'ETH' ? '-' : (valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-') + ' ETH'}`}
+              : `${currency1?.symbol !== 'ETH' ? '-' : (valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-') + ' ETH'}`} */}
           </TYPE.white>
         </RowBetween>
-        <RowBetween>
+        {/* <RowBetween>
           <TYPE.white> Pool rate </TYPE.white>
-          <TYPE.white>0</TYPE.white>
+          <TYPE.white>0</TYPE.white> */}
           {/* <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.multiply(`${60 * 60 * 24 * 7}`)
             ?.toFixed(0, { groupSeparator: ',' })} FLX / week`}</TYPE.white> */}
-        </RowBetween>
+        {/* </RowBetween> */}
         {/* <RowBetween>
           <TYPE.white> Bonus pool </TYPE.white>
           <TYPE.white>30,000 FLX / month</TYPE.white>
         </RowBetween> */}
         <RowBetween>
           <TYPE.white> Current APR </TYPE.white>
-          <TYPE.white>0</TYPE.white>
+          <TYPE.white>{tokenFarmInfo.apr.toFixed(4)}%</TYPE.white>
           {/* <TYPE.white>{cardInfo.currentAPR}</TYPE.white> */}
         </RowBetween>
       </StatContainer>
 
-      {isStaking && (
+      {/* {isStaking && (
         <>
           <Break />
           <BottomSection showBackground={true}>
@@ -197,7 +199,7 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
             </TYPE.black>
           </BottomSection>
         </>
-      )}
+      )} */}
     </Wrapper>
   )
 }

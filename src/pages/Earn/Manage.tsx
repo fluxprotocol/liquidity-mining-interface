@@ -29,6 +29,8 @@ import { usePair } from '../../data/Reserves'
 import usePrevious from '../../hooks/usePrevious'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import { BIG_INT_ZERO } from '../../constants'
+import { useTokenFarmInfo } from '../../data/TokenDepositInfo'
+import { prettyFormatNumber } from '../../utils/prettyFormatNumber'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -101,6 +103,8 @@ export default function Manage({
 
   const [, stakingTokenPair] = usePair(tokenA, tokenB)
   const stakingInfo = useStakingInfo(stakingTokenPair)?.[0]
+
+  const tokenFarmInfo = useTokenFarmInfo(stakingTokenPair, stakingInfo?.stakingRewardAddress)
 
   // detect existing unstaked LP position to show add button if none found
   const userLiquidityUnstaked = useTokenBalance(account ?? undefined, stakingInfo?.stakedAmount?.token)
@@ -180,13 +184,14 @@ export default function Manage({
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>Total deposits</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
-              {valueOfTotalStakedAmountInUSDC
+              ${prettyFormatNumber(tokenFarmInfo.tvl.toFixed(0))}
+              {/* {valueOfTotalStakedAmountInUSDC
                 ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
                 : `${
                     currencyB?.symbol !== 'ETH'
                       ? '-'
                       : (valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-') + ' ETH'
-                  }`}
+                  }`} */}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
@@ -194,6 +199,7 @@ export default function Manage({
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>Pool Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
+              {/* {tokenFarmInfo.apr.toFixed(4)}% */}
               {stakingInfo?.totalRewardRate
                 ?.multiply((60 * 60 * 24 * 7).toString())
                 ?.toFixed(0, { groupSeparator: ',' }) ?? '-'}
@@ -315,7 +321,7 @@ export default function Manage({
                     duration={1}
                   />
                 </TYPE.largeHeader>
-                <TYPE.black fontSize={16} fontWeight={500}>
+                {/* <TYPE.black fontSize={16} fontWeight={500}>
                   <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px ' }}>
                     ⚡
                   </span>
@@ -323,7 +329,7 @@ export default function Manage({
                     ?.multiply((60 * 60 * 24 * 7).toString())
                     ?.toSignificant(4, { groupSeparator: ',' }) ?? '-'}
                   {' FLX / week'}
-                </TYPE.black>
+                </TYPE.black> */}
               </RowBetween>
             </AutoColumn>
           </StyledBottomCard>
