@@ -94,6 +94,8 @@ export default function Earn() {
 
   const getCardInfos = () => {
     httpGet('https://staking.orionprotocol.io/api').then(dataString => {
+      console.log('[] dataString -> ', dataString);
+
       const data = JSON.parse(dataString)
       const newCardInfos = cardInfos.concat()
 
