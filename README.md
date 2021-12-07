@@ -1,4 +1,4 @@
-# orn-liquidity-mining-ui
+# flx-liquidity-mining-ui
 
 Based on https://github.com/Uniswap/uniswap-interface
 

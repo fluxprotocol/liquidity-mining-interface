@@ -99,10 +99,6 @@ export default function Manage({
   const tokenA = wrappedCurrency(currencyA ?? undefined, chainId)
   const tokenB = wrappedCurrency(currencyB ?? undefined, chainId)
 
-
-  console.log('[] tokenA, currencyA -> ', tokenA, currencyA, currencyIdA);
-  console.log('[] tokenB, currencyB -> ', tokenB, currencyB, currencyIdB);
-
   const [, stakingTokenPair] = usePair(tokenA, tokenB)
   const stakingInfo = useStakingInfo(stakingTokenPair)?.[0]
 

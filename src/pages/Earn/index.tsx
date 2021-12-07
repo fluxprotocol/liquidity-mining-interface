@@ -159,19 +159,19 @@ export default function Earn() {
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Orion liquidity mining</TYPE.white>
+                <TYPE.white fontWeight={600}>Flux liquidity mining</TYPE.white>
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  Deposit your Liquidity Provider tokens to receive ORN, the Orion Protocol token.
+                  Deposit your Liquidity Provider tokens to receive FLX, the Flux Protocol token.
                 </TYPE.white>
               </RowBetween>{' '}
               <ExternalLink
                 style={{ color: 'white', textDecoration: 'underline' }}
-                href="https://www.orionprotocol.io/"
+                href="https://www.fluxprotocol.org/"
                 target="_blank"
               >
-                <TYPE.white fontSize={14}>Read more about ORN</TYPE.white>
+                <TYPE.white fontSize={14}>Read more about FLX</TYPE.white>
               </ExternalLink>
             </AutoColumn>
           </CardSection>
@@ -204,7 +204,7 @@ export default function Earn() {
       </AutoColumn>
 
       <div style={{position: 'fixed', left: '0', bottom: '16px', paddingLeft: '16px', fontSize: '10px', color: '0x888'}}>
-        View source code on <FooterLink href="https://github.com/orionprotocol/orn-liquidity-mining-ui" target="_blank">GitHub</FooterLink>. Based on <FooterLink href="https://github.com/Uniswap/uniswap-interface" target="_blank">uniswap-interface</FooterLink>.
+        View source code on <FooterLink href="https://github.com/fluxprotocol/liquidity-mining-interface" target="_blank">GitHub</FooterLink>. Based on <FooterLink href="https://github.com/Uniswap/uniswap-interface" target="_blank">uniswap-interface</FooterLink>.
       </div>
     </PageWrapper>
   )

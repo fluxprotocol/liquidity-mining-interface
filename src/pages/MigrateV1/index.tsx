@@ -73,12 +73,12 @@ export default function MigrateV1() {
           <BackArrow to="/pool" />
           <TYPE.mediumHeader>Migrate V1 Liquidity</TYPE.mediumHeader>
           <div>
-            <QuestionHelper text="Migrate your liquidity tokens from Orion V1 to Orion V2." />
+            <QuestionHelper text="Migrate your liquidity tokens from Flux V1 to Flux V2." />
           </div>
         </AutoRow>
 
         <TYPE.body style={{ marginBottom: 8, fontWeight: 400 }}>
-          For each pool shown below, click migrate to remove your liquidity from Orion V1 and deposit it into Orion
+          For each pool shown below, click migrate to remove your liquidity from Flux V1 and deposit it into Flux
           V2.
         </TYPE.body>
 

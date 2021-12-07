@@ -136,8 +136,8 @@ export default function ClaimModal() {
           </ModalUpper>
           <AutoColumn gap="md" style={{ padding: '1rem', paddingTop: '0' }} justify="center">
             <TYPE.subHeader fontWeight={500}>
-              As a member of the Orion community you may claim ORN to be used for voting and governance. <br /> <br />
-              <ExternalLink href="https://orionprotocol.io">Read more about ORN</ExternalLink>
+              As a member of the Flux community you may claim FLX to be used for voting and governance. <br /> <br />
+              <ExternalLink href="https://fluxprotocol.org">Read more about FLX</ExternalLink>
             </TYPE.subHeader>
             <ButtonPrimary
               disabled={!isAddress(account ?? '')}

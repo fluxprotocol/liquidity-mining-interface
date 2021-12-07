@@ -1,6 +1,6 @@
 {
-  "name": "orn-liquidity-mining-ui",
-  "description": "ORN Liquidity Mining UI",
+  "name": "flx-liquidity-mining-ui",
+  "description": "Flux Liquidity Mining UI",
   "homepage": ".",
   "private": true,
   "devDependencies": {
