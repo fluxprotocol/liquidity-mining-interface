@@ -99,10 +99,12 @@ export default function Manage({
   const tokenA = wrappedCurrency(currencyA ?? undefined, chainId)
   const tokenB = wrappedCurrency(currencyB ?? undefined, chainId)
 
+
+  console.log('[] tokenA, currencyA -> ', tokenA, currencyA, currencyIdA);
+  console.log('[] tokenB, currencyB -> ', tokenB, currencyB, currencyIdB);
+
   const [, stakingTokenPair] = usePair(tokenA, tokenB)
   const stakingInfo = useStakingInfo(stakingTokenPair)?.[0]
-
-  console.log('[] stakingInfo -> ', stakingInfo);
 
   // detect existing unstaked LP position to show add button if none found
   const userLiquidityUnstaked = useTokenBalance(account ?? undefined, stakingInfo?.stakedAmount?.token)
@@ -138,8 +140,6 @@ export default function Manage({
     )
   }
 
-  console.log('[] showUnstakingModel -> ', showStakingModal);
-
   const countUpAmount = stakingInfo?.earnedAmount?.toFixed(6) ?? '0'
   const countUpAmountPrevious = usePrevious(countUpAmount) ?? '0'
 
@@ -164,7 +164,6 @@ export default function Manage({
   const toggleWalletModal = useWalletModalToggle()
 
   const handleDepositClick = useCallback(() => {
-    console.log('[] account -> ', account);
     if (account) {
       setShowStakingModal(true)
     } else {

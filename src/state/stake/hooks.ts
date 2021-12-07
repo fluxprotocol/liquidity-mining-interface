@@ -10,6 +10,16 @@ export const STAKING_GENESIS = 1600387200
 
 export const REWARDS_DURATION_DAYS = 60
 
+const rewards: {
+  tokens: [Token, Token]
+  stakingRewardAddress: string
+}[] = [
+  {
+    tokens: [ORN, USDC],
+    stakingRewardAddress: process.env.REACT_APP_USDC_TOKEN_REWARDS_ADDRESS ?? ''
+  }
+]
+
 // TODO add staking rewards addresses here
 export const STAKING_REWARDS_INFO: {
   [chainId in ChainId]?: {
@@ -17,22 +27,23 @@ export const STAKING_REWARDS_INFO: {
     stakingRewardAddress: string
   }[]
 } = {
-  [ChainId.MAINNET]: [
-    {
-      tokens: [ORN, WETH[ChainId.MAINNET]],
-      stakingRewardAddress: '0x1de3877c9012824c9acc39995647754b1fa9959f'
-    }
-    // {
-    //   tokens: [ORN, USDT],
-    //   stakingRewardAddress: '0x6C3e4cb2E96B01F4b866965A91ed4437839A121a'
-    // }
-  ],
-  [ChainId.GÖRLI]: [
-    {
-      tokens: [ORN, WETH[ChainId.GÖRLI]],
-      stakingRewardAddress: '0x3Ea2907fAE21888A886A745B58291DD5a86bFB2E'
-    }
-  ],
+  [ChainId.MAINNET]: rewards,
+  // {
+  //   tokens: [ORN, WETH[ChainId.MAINNET]],
+  //   stakingRewardAddress: '0x1de3877c9012824c9acc39995647754b1fa9959f'
+  // }
+  // {
+  //   tokens: [ORN, USDT],
+  //   stakingRewardAddress: '0x6C3e4cb2E96B01F4b866965A91ed4437839A121a'
+  // }
+  // ],
+  [ChainId.GÖRLI]: rewards
+  // [
+  //   {
+  //     tokens: [ORN, USDC],
+  //     stakingRewardAddress: process.env.REACT_APP_USDC_TOKEN_REWARDS_ADDRESS ?? ''
+  //   }
+  // ]
 
   // [ChainId.ROPSTEN]: [
   //   {
@@ -76,8 +87,6 @@ export interface StakingInfo {
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
 
-  console.log('[] chainId, account -> ', chainId, account);
-
   let info = useMemo(
     () =>
       chainId
@@ -94,7 +103,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   )
 
   if (!info.length && chainId) {
-    info = STAKING_REWARDS_INFO[chainId] ?? [];
+    info = STAKING_REWARDS_INFO[chainId] ?? []
   }
 
   const uni = chainId ? UNI[chainId] : undefined
@@ -102,8 +111,6 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
 
   const accountArg = useMemo(() => [account ?? undefined], [account])
-
-  console.log('[] rewardsAddresses -> ', rewardsAddresses);
 
   // get all the info from the staking rewards contracts
   const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
@@ -118,8 +125,6 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
     undefined,
     NEVER_RELOAD
   )
-
-  console.log('[] rewardRates -> ', balances, earnedAmounts, totalSupplies);
 
   const periodFinishes = useMultipleContractSingleData(
     rewardsAddresses,
@@ -141,8 +146,6 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
       const totalSupplyState = totalSupplies[index]
       const rewardRateState = rewardRates[index]
       const periodFinishState = periodFinishes[index]
-
-      console.log('[] balanceState, earnedAmountState -> ', balanceState, earnedAmountState);
 
       if (
         // these may be undefined if not logged in
@@ -206,11 +209,20 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           getHypotheticalRewardRate
         })
       }
-
-      console.log('[] memo -> ', memo, pairToFilterBy);
       return memo
     }, [])
-  }, [balances, chainId, pairToFilterBy, earnedAmounts, info, periodFinishes, rewardRates, rewardsAddresses, totalSupplies, uni])
+  }, [
+    balances,
+    chainId,
+    pairToFilterBy,
+    earnedAmounts,
+    info,
+    periodFinishes,
+    rewardRates,
+    rewardsAddresses,
+    totalSupplies,
+    uni
+  ])
 }
 
 export function useTotalUniEarned(): TokenAmount | undefined {
