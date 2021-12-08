@@ -64,18 +64,26 @@ async function getGraphInfo(pair: Pair) {
 export interface TokenFarmInfo {
   tvl: Big
   apr: Big
+  pairId: string;
+  timestamp: number
 }
 
 export function useTokenFarmInfo(pair: Pair | null, rewardsAddress?: string) {
   const liquidityTokenContract = useTokenContract(pair?.liquidityToken.address)
   const [fullInfo, setFullInfo] = useState<TokenFarmInfo>({
     apr: new Big(0),
-    tvl: new Big(0)
+    tvl: new Big(0),
+    pairId: '',
+    timestamp: new Date().getTime(),
   })
 
   useEffect(() => {
     async function run() {
       if (!pair || !liquidityTokenContract || !rewardsAddress) return
+
+      if ((pair.token0.address + '-' + pair.token1.address) === fullInfo.pairId) {
+        return
+      }
 
       const info = await getGraphInfo(pair)
 
@@ -84,19 +92,28 @@ export function useTokenFarmInfo(pair: Pair | null, rewardsAddress?: string) {
         return
       }
 
-      const lpAmountDeposited = (await getStakingRewardsInfo(liquidityTokenContract, rewardsAddress)).div(1e18)
+      let lpAmountDeposited = (await getStakingRewardsInfo(liquidityTokenContract, rewardsAddress)).div(1e18)
+
+      if (lpAmountDeposited.eq(0)) {
+        lpAmountDeposited = new Big(0.00000000001)
+      }
+
       const tvlOfFarm = lpAmountDeposited.mul(info.liquidityTokenValue)
       const valueOfRewards = new Big(process.env.REACT_APP_REWARDS_PER_YEAR ?? '1').mul(info.mainTokenPrice)
       const apr = valueOfRewards.div(tvlOfFarm).mul(100)
 
       setFullInfo({
         apr,
-        tvl: tvlOfFarm
+        tvl: tvlOfFarm,
+        timestamp: new Date().getTime(),
+        pairId: pair.token0.address + '-' + pair.token1.address
       })
     }
 
     run()
   }, [pair, liquidityTokenContract, rewardsAddress])
+
+  console.log('[] fullInfo -> ', fullInfo);
 
   return fullInfo
 }
