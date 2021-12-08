@@ -192,7 +192,10 @@ export default function Earn() {
         <PoolSection>
           {!account ? (
               <>
-              <FakePoolCard cardInfo={cardInfos[0]} />
+              {stakingInfos?.map(stakingInfo => {
+              // need to sort by added liquidity here
+                 return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} cardInfo={cardInfos[0]} />
+              })}
               {/*<FakePoolCard cardInfo={cardInfos[1]} />*/}
               </>
           ) : (
