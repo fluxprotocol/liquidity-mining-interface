@@ -14,6 +14,7 @@ jobs:
     env:
       CI: false
       REACT_APP_NETWORK_URL: https://mainnet.infura.io/v3/f067a90d45464690bb0a8d7ca6ae1101
+      REACT_APP_UNISWAP_THE_GRAPH: https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2
 
     strategy:
       matrix:
@@ -31,6 +32,7 @@ jobs:
         cmd: install
     - run: cp .env.example .env
     - run: echo "REACT_APP_NETWORK_URL = $REACT_APP_NETWORK_URL" >> .env
+    - run: echo "REACT_APP_UNISWAP_THE_GRAPH = $REACT_APP_UNISWAP_THE_GRAPH" >> .env
     - run: npm run build --if-present
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
