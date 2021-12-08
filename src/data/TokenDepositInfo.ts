@@ -16,8 +16,8 @@ async function getStakingRewardsInfo(tokenContract: Contract, rewardsAddress: st
 }
 
 async function getGraphInfo(pair: Pair) {
-  const token0Address = '0x3Ea8ea4237344C9931214796d9417Af1A1180770'//pair.token0.address.toLowerCase();
-  const token1Address = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'//pair.token1.address.toLowerCase();
+  const token0Address = pair.token0.address.toLowerCase()
+  const token1Address = pair.token1.address.toLowerCase()
 
   try {
     const query = `
