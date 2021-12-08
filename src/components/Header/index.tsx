@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next'
 
 import styled from 'styled-components'
 
-import Logo from '../../assets/svg/logo.png'
-import LogoDark from '../../assets/svg/logo.png'
+import Logo from '../../assets/images/flux-light.svg'
+import LogoDark from '../../assets/images/flux-light.svg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances, useAggregateUniBalance } from '../../state/wallet/hooks'
@@ -226,6 +226,10 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
+const LogoDiv = styled.img`
+  width: 100px;
+`
+
 const StyledExternalLink = styled(ExternalLink).attrs({
   activeClassName
 })<{ isActive?: boolean }>`
@@ -293,9 +297,9 @@ export default function Header() {
       </Modal>
       <HeaderRow>
         <Title href=".">
-          <UniIcon>
-            <img width={'24px'} src={isDark ? LogoDark : Logo} alt="logo" />
-          </UniIcon>
+          {/* <UniIcon> */}
+          <LogoDiv src={isDark ? LogoDark : Logo} alt="logo" />
+          {/* </UniIcon> */}
         </Title>
         <HeaderLinks>
           {/*<StyledNavLink id={`swap-nav-link`} to={'/swap'}>*/}
@@ -314,9 +318,9 @@ export default function Header() {
           {/*>*/}
           {/*  {t('pool')}*/}
           {/*</StyledNavLink>*/}
-          <StyledNavLink id={`stake-nav-link`} to={'/flx'}>
+          {/* <StyledNavLink id={`stake-nav-link`} to={'/flx'}>
             FLX
-          </StyledNavLink>
+          </StyledNavLink> */}
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
           {/*  Vote*/}
           {/*</StyledNavLink>*/}

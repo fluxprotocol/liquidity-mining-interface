@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useStakingContract, useTokenContract } from '../hooks/useContract';
 import Big from 'big.js';
 
+Big.PE = 1000000;
+
+
 async function getStakingRewardsInfo(tokenContract: Contract, rewardsAddress: string, ) {
   try {
     const amountDeposited = await tokenContract.balanceOf(rewardsAddress)
@@ -112,8 +115,6 @@ export function useTokenFarmInfo(pair: Pair | null, rewardsAddress?: string) {
 
     run()
   }, [pair, liquidityTokenContract, rewardsAddress])
-
-  console.log('[] fullInfo -> ', fullInfo);
 
   return fullInfo
 }
