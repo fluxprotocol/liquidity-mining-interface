@@ -174,10 +174,10 @@ export default function PoolCard({ stakingInfo, cardInfo }: { stakingInfo: Staki
           <TYPE.white> Bonus pool </TYPE.white>
           <TYPE.white>30,000 FLX / month</TYPE.white>
         </RowBetween> */}
-        {/* <RowBetween>
+        <RowBetween>
           <TYPE.white> Current APR </TYPE.white>
           <TYPE.white>{tokenFarmInfo.apr.toFixed(4)}%</TYPE.white>
-        </RowBetween> */}
+        </RowBetween>
       </StatContainer>
 
       {/* {isStaking && (
