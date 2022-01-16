@@ -96,38 +96,38 @@ export default function Earn() {
     httpGet('https://staking.orionprotocol.io/api').then(dataString => {
       console.log('[] dataString -> ', dataString);
 
-      const data = JSON.parse(dataString)
-      const newCardInfos = cardInfos.concat()
+      // const data = JSON.parse(dataString)
+      // const newCardInfos = cardInfos.concat()
 
-      const ethToUsd = Number(data.ethToUsd)
-      const ornToUsd = Number(data.ornToUsd)
+      // const ethToUsd = Number(data.ethToUsd)
+      // const ornToUsd = Number(data.ornToUsd)
 
-      const totalDepositedETH = Number(data['ORN-ETH'].totalDeposited)
-      const totalDeposited = ethToUsd ? ('$' + Math.floor(totalDepositedETH * ethToUsd).toLocaleString('en')) : (totalDepositedETH.toLocaleString('en') + ' ETH')
+      // const totalDepositedETH = Number(data['ORN-ETH'].totalDeposited)
+      // const totalDeposited = ethToUsd ? ('$' + Math.floor(totalDepositedETH * ethToUsd).toLocaleString('en')) : (totalDepositedETH.toLocaleString('en') + ' ETH')
 
-      const poolRateORN = Number(data['ORN-ETH'].poolRate)
+      // const poolRateORN = Number(data['ORN-ETH'].poolRate)
 
-      const bonusRate = 30000
+      // const bonusRate = 30000
 
-      let sCurrentAPR = 'Loading..'
+      // let sCurrentAPR = 'Loading..'
 
-      if (ethToUsd && ornToUsd) {
-          const currentAPR = ((poolRateORN * 365 / 7 + bonusRate * 365 / 30) * ornToUsd) / (totalDepositedETH * ethToUsd);
-          sCurrentAPR = (currentAPR * 100).toFixed(2) + '%'
-      }
+      // if (ethToUsd && ornToUsd) {
+      //     const currentAPR = ((poolRateORN * 365 / 7 + bonusRate * 365 / 30) * ornToUsd) / (totalDepositedETH * ethToUsd);
+      //     sCurrentAPR = (currentAPR * 100).toFixed(2) + '%'
+      // }
 
-      newCardInfos[0].totalDeposited = totalDeposited
-      newCardInfos[0].poolRate = poolRateORN.toLocaleString('en') + ' ORN / week'
-      newCardInfos[0].periodFinish = new Date(Number(data['ORN-ETH'].periodFinish * 1000))
-      newCardInfos[0].currentAPR = sCurrentAPR
+      // newCardInfos[0].totalDeposited = totalDeposited
+      // newCardInfos[0].poolRate = poolRateORN.toLocaleString('en') + ' ORN / week'
+      // newCardInfos[0].periodFinish = new Date(Number(data['ORN-ETH'].periodFinish * 1000))
+      // newCardInfos[0].currentAPR = sCurrentAPR
 
-      console.log('[] newCardInfos -> ', newCardInfos);
+      // console.log('[] newCardInfos -> ', newCardInfos);
 
-      // newCardInfos[1].totalDeposited = '$' + Number(data['ORN-USDT'].totalDeposited).toLocaleString()
-      // newCardInfos[1].poolRate = Number(data['ORN-USDT'].poolRate).toLocaleString('en') + ' ORN / week'
-      // newCardInfos[1].periodFinish = new Date(Number(data['ORN-USDT'].periodFinish))
+      // // newCardInfos[1].totalDeposited = '$' + Number(data['ORN-USDT'].totalDeposited).toLocaleString()
+      // // newCardInfos[1].poolRate = Number(data['ORN-USDT'].poolRate).toLocaleString('en') + ' ORN / week'
+      // // newCardInfos[1].periodFinish = new Date(Number(data['ORN-USDT'].periodFinish))
 
-      setCardInfos(newCardInfos)
+      // setCardInfos(newCardInfos)
     })
   }
 
