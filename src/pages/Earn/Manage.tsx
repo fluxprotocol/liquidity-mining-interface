@@ -200,9 +200,10 @@ export default function Manage({
             <TYPE.body style={{ margin: 0 }}>Pool Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
               {/* {tokenFarmInfo.apr.toFixed(4)}% */}
-              {stakingInfo?.totalRewardRate
+              {0}
+              {/* {stakingInfo?.totalRewardRate
                 ?.multiply((60 * 60 * 24 * 7).toString())
-                ?.toFixed(0, { groupSeparator: ',' }) ?? '-'}
+                ?.toFixed(0, { groupSeparator: ',' }) ?? '-'} */}
               {' FLX / week'}
             </TYPE.body>
           </AutoColumn>
